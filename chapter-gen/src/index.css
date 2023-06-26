@@ -15,6 +15,5 @@ code {
 #root {
   /* CSS properties to position the first component */
   position: relative;
-  top: 50px;
-  left: 50px;
+
 }

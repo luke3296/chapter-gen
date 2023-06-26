@@ -1,5 +1,22 @@
 .App {
   text-align: center;
-
 }
 
+/* .gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+  width: 100%;
+} */
+
+
+.gridContainer {
+display: flex;
+flex-wrap: wrap;
+gap: 20px; 
+width: 100%;
+}
+.gridItem {
+  flex: 1 0 300px;
+  margin: 10px;
+}

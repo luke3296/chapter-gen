@@ -1,15 +1,17 @@
-.WritingStyle {
+.ChapterBeats {
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 400px;
-    height: 500px;
+    height: 600px;
     border-style: solid black;
     border-radius: 25px;
     background: #96e2f0;
   }
   
-#in_txt{
+  
+  
+#in_txt_chap{
     align-self: center;
     min-height: 100px;
     max-width: 360px;
@@ -17,7 +19,7 @@
 
 }
 
-#out_txt{
+#out_txt_beats{
     align-self: center;
 
     min-height: 100px;
