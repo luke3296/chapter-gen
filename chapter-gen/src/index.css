@@ -18,9 +18,3 @@ code {
   top: 50px;
   left: 50px;
 }
-#root2 {
-  /* CSS properties to position the second component */
-  position: relative;
-  top: 100px;
-  left: 100px;
-}

@@ -1,0 +1,26 @@
+.WritingStyle {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    border-style: solid black;
+    border-radius: 25px;
+    background: #96e2f0;
+  }
+  
+#in_txt{
+    align-self: center;
+    min-height: 100px;
+    max-width: 360px;
+    width: 360px;
+
+}
+
+#out_txt{
+    align-self: center;
+
+    min-height: 100px;
+    max-width: 360px;
+    width: 360px;
+}
