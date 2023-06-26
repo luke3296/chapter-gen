@@ -1,0 +1,12 @@
+.GetApiKey {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 400px;
+    height: 200px;
+    border-style: solid black;
+    border-radius: 25px;
+    background: #96e2f0;
+  }
+  
+  
