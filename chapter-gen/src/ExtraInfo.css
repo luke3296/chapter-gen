@@ -1,26 +1,19 @@
-.ChapterBeats {
+.ExtraInfo {
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 400px;
     height: 600px;
-    border-style: solid black;
+    border-style: solid;
     border-radius: 25px;
     background: #96e2f0;
   }
-
-#in_txt_chap{
+  
+  #in_txt_1,
+  #in_txt_2 {
     align-self: center;
     min-height: 100px;
     max-width: 360px;
     width: 360px;
-
-}
-
-#out_txt_beats{
-    align-self: center;
-
-    min-height: 100px;
-    max-width: 360px;
-    width: 360px;
-}
+  }
+  

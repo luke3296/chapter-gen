@@ -3,6 +3,8 @@ import App2 from './App2';
 import GetApiKey from './GetApiKey';
 import WritingStyle from './WritingStyle';
 import ChapterBeats from './ChapterBeats';
+import ExtraInfo from './ExtraInfo';  // Import the new component
+
 
 import React, { useState } from 'react';
 import ApiKeyContext from './ApiKeyContext';
@@ -24,13 +26,16 @@ function App() {
             <WritingStyle />
           </div>
           <div className="gridItem">
-            <ChapterBeats addApp2Instance={addApp2Instance} /> {/* Pass the addApp2Instance prop */}
+            <ExtraInfo />  {/* Use the new component */}
+          </div>
+          <div className="gridItem">
+            <ChapterBeats addApp2Instance={addApp2Instance} />
           </div>
           {app2Instances.map((text, index) => (
             <div className="gridItem" key={index}>
-              <App2 text={text} />
+                <App2 text={text} />
             </div>
-          ))}
+))}
         </div>
       </ApiKeyContext.Provider>
     </div>
