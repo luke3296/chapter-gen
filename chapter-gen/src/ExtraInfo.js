@@ -32,19 +32,89 @@ function ExtraInfo() {
   };
 
   // Replace this function with the actual functionality
-  const doSomething = () => {
-    console.log('Doing something with the inputs and parameters');
+  const condenceBGinfo = () => {
+      var in_text = document.getElementById("in_txt_1").value
+      const payload = JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [
+              { role: 'system', content: 'Summarise the following text including lots of detail' },
+              { role: 'user', content: in_text }
+          ],
+          "temperature": temperature,
+          "max_tokens": maxTokens,
+          "top_p": topP,
+          "frequency_penalty": frequencyPenalty,
+          "presence_penalty": presencePenalty
+      });
+
+      fetch('https://api.openai.com/v1/chat/completions', {
+          body: payload,
+          headers: {
+              Authorization: 'Bearer '+apiKey,
+              'Content-Type': 'application/json'
+          },
+          method: 'POST'
+      })
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data);
+              document.getElementById('out_txt_1').value = data.choices[0].message.content;
+          })
+          .catch((err) => {
+              console.log(err);
+          });
   };
+
+  const condenceChacterinfo = () => {
+      var in_text = document.getElementById("in_txt_2").value
+      const payload = JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [
+              { role: 'system', content: 'Summarise the following text including lots of detail' },
+              { role: 'user', content: in_text }
+          ],
+          "temperature": temperature,
+          "max_tokens": maxTokens,
+          "top_p": topP,
+          "frequency_penalty": frequencyPenalty,
+          "presence_penalty": presencePenalty
+      });
+
+      fetch('https://api.openai.com/v1/chat/completions', {
+          body: payload,
+          headers: {
+              Authorization: 'Bearer '+apiKey,
+              'Content-Type': 'application/json'
+          },
+          method: 'POST'
+      })
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data);
+              document.getElementById('out_txt_2').value = data.choices[0].message.content;
+          })
+          .catch((err) => {
+              console.log(err);
+          });
+  };
+
 
   return (
     <div className="ExtraInfo">
+      <p>Enter some background info</p>
       <textarea value={inputValue1} onChange={handleInputChange1} id="in_txt_1" />
       <br></br>
-      <button onClick={doSomething}>Do Something</button>
+      <button onClick={condenceBGinfo}>Condence</button>
       <br></br>
+      <textarea id="out_txt_1" />
+      <br></br>
+      <p>Enter some Chacter profiles </p>
       <textarea value={inputValue2} onChange={handleInputChange2} id="in_txt_2" />
       <br></br>
-      <button onClick={doSomething}>Do Something Else</button>
+      <button onClick={condenceChacterinfo}>Condence</button>
+      <br></br>
+      <textarea  id="out_txt_2" />
+      <br></br>
       <button style={{position: 'relative', top: 0, left: 0}} onClick={handleModalOpen}>Open Settings</button>
       {modalOpen && (
         <div className="modal">

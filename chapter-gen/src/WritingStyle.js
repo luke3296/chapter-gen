@@ -10,13 +10,12 @@ function WritingStyle() {
     setInputValue(event.target.value);
   };
 
-
     // Modal open/close state
     const [modalOpen, setModalOpen] = useState(false);
 
     // States for each variable
     const [temperature, setTemperature] = useState(0);
-    const [maxTokens, setMaxTokens] = useState(100);
+    const [maxTokens, setMaxTokens] = useState(50);
     const [topP, setTopP] = useState(1);
     const [frequencyPenalty, setFrequencyPenalty] = useState(0.2);
     const [presencePenalty, setPresencePenalty] = useState(0);
@@ -32,48 +31,52 @@ function WritingStyle() {
     // Update AnalyseStyle to use state variables
     const AnalyseStyle = () => {
         // Existing code...
-        let in_txt=document.getElementById("in_txt").value
+        let in_txt = document.getElementById("in_txt").value;
         const wordCount = in_txt.split(' ').length;
-    
+        
         if (wordCount > 1000) {
           alert("Maximum word count exceeded. Please limit your input to 1000 words.");
           return;
         }
+        
         // Replace hardcoded values with state variables
-        console.log(`Analyse Style: temp ${temperature}, maxTokens ${maxTokens}, top_p ${topP}, freq_penalty ${frequencyPenalty}, pres_penalty ${presencePenalty} `) 
-        fetch("https://api.openai.com/v1/completions", {
-            // Existing code...
-            
-            body: JSON.stringify({
-                model: "text-davinci-003",
-                prompt: "Write a detailed description of the wriritng stlyle, tense and POV for the following passage. do not attempt to continue the text. do include lots of detail about the writing style: "+document.getElementById("in_txt").value,
-                temperature: temperature,
-                max_tokens: maxTokens,
-                top_p: topP,
-                frequency_penalty: frequencyPenalty,
-                presence_penalty: presencePenalty,
-            }),
-            headers: {
-              Authorization: "Bearer " + apiKey,
-              "Content-Type": "application/json",
-            },
-            method: "POST",
-            }).then((response) => response.json())
-            .then((data) => {
+        console.log(`Analyse Style: temp ${temperature}, maxTokens ${maxTokens}, top_p ${topP}, freq_penalty ${frequencyPenalty}, pres_penalty ${presencePenalty}`);
+        
+        const payload = JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [
+            { role: 'system', content: 'Pretend you are an author, your task is to analyse the following passage and write a concise description so that another person can try write in the same style. It should convey the tense and POV of the text. Your response should start write in a ... make it as short as possible. Do not describe what happens in the passage, only describe the writing style.' },
+            { role: 'user', content: in_txt }
+          ],
+            "temperature": temperature,
+            "max_tokens": maxTokens,
+            "top_p": topP,
+            "frequency_penalty": frequencyPenalty,
+            "presence_penalty": presencePenalty
+        });
+        
+        fetch('https://api.openai.com/v1/chat/completions', {
+          body: payload,
+          headers: {
+            Authorization: 'Bearer '+apiKey,
+            'Content-Type': 'application/json'
+          },
+          method: 'POST'
+        })
+          .then((response) => response.json())
+          .then((data) => {
             console.log(data);
-            document.getElementById("out_txt").value=data['choices'][0].text
-            
-            })
-            .catch((err) => {
+            document.getElementById('out_txt').value = data.choices[0].message.content;
+          })
+          .catch((err) => {
             console.log(err);
-            });
+          });
+        
         }
     
 
     return (
-      
       <div className="WritingStyle">
-
       <p>enter some text to analyze (max 1000 words)</p>
       <textarea value={inputValue} onChange={handleInputChange} id="in_txt" />
       <br></br>
