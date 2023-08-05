@@ -7,7 +7,7 @@ function ChapterBeats({addApp2Instance}) {
   const [inputValue, setInputValue] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [temperature, setTemperature] = useState(0.1);
-  const [maxTokens, setMaxTokens] = useState(100);
+  const [maxTokens, setMaxTokens] = useState(700);
   const [topP, setTopP] = useState(1);
   const [frequencyPenalty, setFrequencyPenalty] = useState(0.5);
   const [presencePenalty, setPresencePenalty] = useState(0.5);
@@ -55,13 +55,13 @@ function ChapterBeats({addApp2Instance}) {
     let charInfo = document.getElementById('out_txt_2').value;
     let systemPrompt=''
     if(bgInfo.trim() == '' && charInfo.trim() != '' ){
-      systemPrompt ='Write a numbered list of detailed chapter beats for the given chapter description. The character info is' + charInfo + '. Only respond with a numberd list:'
+      systemPrompt ='This is some character info :' + charInfo + 'Write a Ordered List of detailed chapter beats for the given chapter description : '
     }else if(bgInfo.trim() != '' && charInfo.trim() == ''){
-      systemPrompt ='Write a numbered list of detailed chapter beats for the given chapter description. The background info is '+ bgInfo + 'Only respond with a numberd list :'
+      systemPrompt ='This is some background info :' + bgInfo + 'Write a Ordered List of detailed chapter beats for the given chapter description : '
     }else if(bgInfo.trim() != '' && charInfo.trim() != ''){
-      systemPrompt ='Write a numbered list of detailed chapter beats for the given chapter description. The background info is '+ bgInfo + 'the character info is' + charInfo + ' Only respond with a numberd list:'
+      systemPrompt ='This is some character info :' + charInfo + 'and this is some background info : '  +bgInfo+  ' Write a Ordered List of detailed chapter beats for the given chapter description : '
     }else{
-      systemPrompt ='Write a numbered list of detailed chapter beats for the given chapter description, Only respond with a numberd list :'
+      systemPrompt ='Write a Ordered List of detailed chapter beats for the given chapter description : '
     }
     console.log(systemPrompt)
     const payload = JSON.stringify({

@@ -18,7 +18,7 @@ function ExtraInfo() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const [temperature, setTemperature] = useState(0);
-  const [maxTokens, setMaxTokens] = useState(100);
+  const [maxTokens, setMaxTokens] = useState(700);
   const [topP, setTopP] = useState(1);
   const [frequencyPenalty, setFrequencyPenalty] = useState(0.2);
   const [presencePenalty, setPresencePenalty] = useState(0);
