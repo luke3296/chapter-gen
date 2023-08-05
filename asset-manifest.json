@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/chapter-gen/static/css/main.cb3607f8.css",
+    "main.js": "/chapter-gen/static/js/main.6749005b.js",
+    "static/js/787.dc7bd53f.chunk.js": "/chapter-gen/static/js/787.dc7bd53f.chunk.js",
+    "index.html": "/chapter-gen/index.html",
+    "main.cb3607f8.css.map": "/chapter-gen/static/css/main.cb3607f8.css.map",
+    "main.6749005b.js.map": "/chapter-gen/static/js/main.6749005b.js.map",
+    "787.dc7bd53f.chunk.js.map": "/chapter-gen/static/js/787.dc7bd53f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb3607f8.css",
+    "static/js/main.6749005b.js"
+  ]
+}
